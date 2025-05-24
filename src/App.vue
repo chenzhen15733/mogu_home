@@ -79,7 +79,7 @@ onMounted(() => {
         <div class="domain-row">
           <span class="speed">测速 <span class="speed-num">129ms</span></span>
           <span class="domain">lai.mgzx4.com</span>
-          <a href="#" class="watch-btn">立即观看</a>
+          <span class="watch-btn">立即观看</span>
         </div>
         <!-- 安装帮助 -->
         <div class="help-row">
@@ -225,41 +225,42 @@ onMounted(() => {
   margin-top: -30px;
 }
 .domain-row {
+  background:url('./assets/speed_mask.png') no-repeat center center;
+  background-size: cover;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 18px;
+  margin-bottom: 18px;
+  height: 40px;
+  width: 100%;
+  position: relative;
 }
 .speed {
-  background: #fff;
-  color: #b94e8c;
+  color: #fff;
   border-radius: 12px;
   padding: 2px 10px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: normal;
 }
 .speed-num {
   color: #4caf50;
-  font-weight: bold;
+  font-weight: normal;
 }
 .domain {
-  background: #fff;
-  color: #b94e8c;
+  color: #fff;
   border-radius: 12px;
   padding: 2px 10px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: normal;
 }
 .watch-btn {
-  background: linear-gradient(90deg,#ffb6b9,#f8b6d2);
-  color: #fff;
+  background:url('./assets/watch_button.png') no-repeat center center;
+  color: #B9050D;
   border-radius: 12px;
   padding: 4px 16px;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 2px 8px #b94e8c33;
-  transition: background 0.2s;
+  max-height: 20px;
+  margin-left: auto;
+  margin-right: 18px;
 }
 .watch-btn:hover {
   background: linear-gradient(90deg,#f8b6d2,#ffb6b9);
