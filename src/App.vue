@@ -65,8 +65,8 @@ onMounted(() => {
       <!-- 内容区 -->
       <div class="main-content">
         <div class="center-block">
-          <img class="main-title-big-img" src="./assets/free_forever.png" alt="永久免费" style="height: 13.vw"/>
-          <img class="grid-mask-img" src="./assets/grid_mask.png" alt="grid mask" style="height: 43.7.vw"/>
+          <img class="main-title-big-img" src="./assets/free_forever.png" alt="永久免费" style="height: 13vw"/>
+          <img class="grid-mask-img" src="./assets/grid_mask.png" alt="grid mask" style="height: 43.7vw"/>
 
         </div>
         <div class="main-desc-block">
