@@ -19,6 +19,18 @@ const banners = [
 ]
 const currentBanner = ref(0)
 
+const wapurl = [
+  'lai.mgzx4.com',
+  'kan.mgzx4.com',
+  'pian.mgzx4.com',
+]
+const wapurlLinks = [
+  'https://lai.mgzx4.com',
+  'https://kan.mgzx4.com',
+  'https://pian.mgzx4.com',
+]
+const currentDomain = ref(0)
+
 onMounted(() => {
   const ua = navigator.userAgent || navigator.vendor || window.opera
   isAndroid.value = /android/i.test(ua)
@@ -26,6 +38,10 @@ onMounted(() => {
 
   setInterval(() => {
     currentBanner.value = (currentBanner.value + 1) % banners.length
+  }, 2000)
+
+  setInterval(() => {
+    currentDomain.value = (currentDomain.value + 1) % wapurl.length
   }, 2000)
 })
 </script>
@@ -76,10 +92,37 @@ onMounted(() => {
       
 
         <!-- 测速、域名、立即观看 -->
-        <div class="domain-row">
-          <span class="speed">测速 <span class="speed-num">129ms</span></span>
-          <span class="domain">lai.mgzx4.com</span>
-          <span class="watch-btn">立即观看</span>
+        <div class="domain-row-indicator-wrap">
+          <div class="domain-row-vertical">
+            <span class="speed">测速 <span class="speed-num">129ms</span></span>
+            <div class="domain-viewport">
+              <div
+                class="domain-list"
+                :style="{
+                  transform: `translateY(-${currentDomain * 40}px)`,
+                  transition: 'transform 0.4s cubic-bezier(0.55, 0, 0.1, 1)'
+                }"
+              >
+                <a
+                  v-for="(item, idx) in wapurl"
+                  :key="item"
+                  class="domain domain-vertical"
+                  :href="wapurlLinks[idx]"
+                  target="_blank"
+                >
+                  {{ item }}
+                </a>
+              </div>
+            </div>
+            <span class="watch-btn">立即观看</span>
+          </div>
+          <div class="domain-indicator">
+            <span
+              v-for="(item, idx) in wapurl"
+              :key="item"
+              :class="['dot', { active: idx === currentDomain }]"
+            ></span>
+          </div>
         </div>
         <!-- 安装帮助 -->
         <div class="help-row">
@@ -223,18 +266,27 @@ onMounted(() => {
   z-index: 1;
   margin-top: -6vw;
 }
-.domain-row {
-  background:url('./assets/speed_mask.png') no-repeat center center;
+.domain-row-indicator-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+}
+.domain-row-vertical {
+  background: url('./assets/speed_mask.png') no-repeat center center;
   background-size: cover;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 2.4vw;
-  height: 7.57vw;
-  border-radius: 1.5vw;
-  margin-bottom: 2.4vw;
   height: 8.24vw;
   width: 100%;
   position: relative;
+  border-radius: 1.5vw;
+  margin-bottom: 2.4vw;
+  overflow: hidden;
 }
 .speed {
   color: #fff;
@@ -242,18 +294,37 @@ onMounted(() => {
   padding: 0.27vw 1.33vw;
   font-size: 3.22vw;
   font-weight: normal;
+  flex-shrink: 0;
 }
 .speed-num {
   color: #4caf50;
   font-size: 2.39vw;
   font-weight: normal;
 }
-.domain {
-  color: #fff;
-  border-radius: 1.6vw;
-  font-size: 4.4vw;
-  margin-left: 10.2vw;
-  font-weight: normal;
+.domain-viewport {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 12vw;
+  flex: none;
+  display: block;
+}
+.domain-list {
+  display: block;
+}
+.domain-vertical {
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  color: #fff !important;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: none;
 }
 .watch-btn {
   background:url('./assets/watch_button.png') no-repeat center center;
@@ -261,7 +332,7 @@ onMounted(() => {
   border-radius: 1.6vw;
   padding: 0.53vw 2.13vw;
   max-height: 15.8vw;
-  margin-left: auto;
+  margin-left: 1vw;
   font-size: 2.92vw;
   margin-right: 2.4vw;
 }
@@ -276,7 +347,7 @@ onMounted(() => {
 }
 .warn {
   color: #ffe066;
-  font-size: 1.87vw;
+  font-size: 2vw;
   font-weight: bold;
   display: block;
   text-align: left;
@@ -298,7 +369,8 @@ onMounted(() => {
   width: 100%;
 }
 .download-btn.black {
-  background: #111;
+  background: url('./assets/download_btn.png') no-repeat center center;
+  background-size: cover;
   color: #fff;
   border-radius: 16vw;
   display: flex;
@@ -309,7 +381,6 @@ onMounted(() => {
   padding: 1.6vw 4.27vw;
   padding-left: 10vw;
   text-decoration: none;
-  box-shadow: 0 0.27vw 1.07vw #0003;
   border: none;
   gap: 1.33vw;
 }
@@ -393,6 +464,30 @@ onMounted(() => {
   font-size: 4vw;
   font-weight: 400;
   opacity: 0.95;
+}
+.domain-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vw;
+  z-index: 10;
+  margin-left: 2vw;
+  margin-right: -2vw;
+  margin-bottom: 1.5vw;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.dot {
+  width: 1.3vw;
+  height: 1.3vw;
+  border-radius: 50%;
+  background: #b3c6e0;
+  display: block;
+  margin: 0.2vw 0;
+  transition: background 0.2s;
+}
+.dot.active {
+  background: #1e6fff;
 }
 </style>
 
