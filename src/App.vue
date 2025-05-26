@@ -105,7 +105,6 @@ onMounted(() => {
 <style scoped>
 .landing-bg {
   min-height: 100vh;
-  background: #f8e1e7;
   position: relative;
   font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
   width: 100%;
@@ -358,7 +357,7 @@ onMounted(() => {
   left: 0;
   bottom: 0;
   width: 100vw;
-  height: auto;
+  height: 100%;
   z-index: 2;
   pointer-events: none;
 }
