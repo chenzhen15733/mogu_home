@@ -320,79 +320,7 @@ onMounted(() => {
   z-index: 1;
   margin-top: -6vw;
 }
-.domain-row-indicator-wrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  justify-content: space-between;
-}
-.domain-row-vertical {
-  background: url('./assets/speed_mask.png') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2.4vw;
-  height: 8.24vw;
-  width: 100%;
-  position: relative;
-  border-radius: 1.5vw;
-  margin-bottom: 2.4vw;
-  overflow: hidden;
-}
-.speed {
-  color: #fff;
-  border-radius: 1.6vw;
-  padding: 0.27vw 1.33vw;
-  font-size: 3.22vw;
-  font-weight: normal;
-  flex-shrink: 0;
-}
-.speed-num {
-  color: #4caf50;
-  font-size: 2.39vw;
-  font-weight: normal;
-}
-.domain-viewport {
-  height: 40px;
-  overflow: hidden;
-  position: relative;
-  margin-left: 12vw;
-  flex: none;
-  display: block;
-}
-.domain-list {
-  display: block;
-}
-.domain-vertical {
-  display: block;
-  text-align: left;
-  white-space: nowrap;
-  color: #fff !important;
-  font-size: 20px;
-  height: 40px;
-  line-height: 40px;
-  box-sizing: border-box;
-  padding: 0;
-  border: none;
-  background: none;
-  text-decoration: none;
-}
-.watch-btn {
-  background:url('./assets/watch_button.png') no-repeat center center;
-  color: #B9050D;
-  border-radius: 1.6vw;
-  padding: 0.53vw 2.13vw;
-  max-height: 15.8vw;
-  margin-left: 1vw;
-  font-size: 2.92vw;
-  margin-right: 2.4vw;
-}
-.watch-btn:hover {
-  background: linear-gradient(90deg,#f8b6d2,#ffb6b9);
-}
+
 .help-row {
   width: 100%;
   margin-top: 1.3vw;
@@ -445,7 +373,7 @@ onMounted(() => {
 .download-btn.black:hover {
   filter: brightness(1.1);
 }
-@media (max-width: 99.7vw) {
+@media (max-width: 57.3vw) {
   .main-content {
     padding: 0 0.53vw 0 0.53vw;
   }
@@ -518,6 +446,136 @@ onMounted(() => {
   font-size: 4vw;
   font-weight: 400;
   opacity: 0.95;
+}
+.domain-row-indicator-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+}
+.domain-row-vertical {
+  background: url('./assets/speed_mask.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.4vw;
+  height: 8.24vw;
+  width: 100%;
+  position: relative;
+  border-radius: 1.5vw;
+  margin-bottom: 2.4vw;
+  overflow: hidden;
+}
+.speed {
+  color: #fff;
+  border-radius: 1.6vw;
+  padding: 0.27vw 1.33vw;
+  font-size: 3.22vw;
+  font-weight: normal;
+  flex-shrink: 0;
+}
+.speed-num {
+  color: #4caf50;
+  font-size: 2.39vw;
+  font-weight: normal;
+}
+.domain-viewport {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 12vw;
+  flex: none;
+  display: block;
+}
+.domain-list {
+  display: block;
+}
+.domain-vertical {
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  color: #fff !important;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: none;
+}
+.watch-btn {
+  background: url('./assets/watch_button.png') no-repeat center center;
+  color: #B9050D;
+  border-radius: 1.6vw;
+  min-width: 70px;
+  min-height: 22px;
+  font-size: 0.8rem;
+  margin-left: 1vw;
+  margin-right: 2.4vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+  .domain-viewport {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 10vw;
+  flex: none;
+  display: block;
+}
+.domain-list {
+  display: block;
+}
+.domain-vertical {
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  color: #fff !important;
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: none;
+}
+  .watch-btn {
+    font-size: 0.7rem;
+    border-radius: 8px;
+    min-width: 60px;
+    min-height: 24px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 600px) {
+  .watch-btn {
+    font-size: 1.05rem;
+    min-width: 80px;
+    min-height: 34px;
+    padding: 0.45em 1.5em;
+  }
+}
+
+@media (min-width: 800px) {
+  .watch-btn {
+    font-size: 1.2rem;
+    min-width: 110px;
+    min-height: 40px;
+    padding: 0.6em 2.2em;
+  }
+}
+.watch-btn:hover {
+  background: linear-gradient(90deg,#f8b6d2,#ffb6b9);
 }
 .domain-indicator {
   display: flex;
